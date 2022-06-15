@@ -1,3 +1,5 @@
+import {useState} from 'react';
+
 import styled from 'styled-components';
 
 import MenuHeader from '../../assets/images/menuHeader.svg';
@@ -8,6 +10,7 @@ import Apps from '../../assets/images/Apps.svg';
 import Notification from '../../assets/images/Notification.svg';
 import Ava from '../../assets/images/ava.jpg';
 import {HeaderIcon} from '../HeaderIcon/HeaderIcon';
+
 
 const HeaderContainer = styled.div`
     background: #61dafb;
@@ -68,6 +71,16 @@ const AvatarImg = styled.img`
 
 
 const Header: React.FC = () => {
+    const [ searchValue, setSearchValue ] = useState('');
+
+    const changeSearch: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+        setSearchValue(e.target.value);
+    };
+
+    const search = () => {
+        setSearchValue('');
+    };
+
     return <HeaderContainer >
         <MenuImgContainer>
             <HeaderIcon img={MenuHeader} />
@@ -77,8 +90,15 @@ const Header: React.FC = () => {
             <span>MYTUBE</span>
         </LogoContainer>
         <SearchInputContainer>
-            <SearchInput type="text" placeholder="Search..."/>
-            <HeaderIcon img={Search} />
+            <SearchInput
+                type="text"
+                value={searchValue}
+                placeholder="Search..."
+                onChange={changeSearch}
+            />
+            <div onClick={search}>
+                <HeaderIcon img={Search} />
+            </div>
         </SearchInputContainer>
         <AddedContainer>
             <HeaderIcon img={Create} />
