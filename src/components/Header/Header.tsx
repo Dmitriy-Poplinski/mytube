@@ -1,5 +1,4 @@
 import {useState} from 'react';
-
 import styled from 'styled-components';
 
 import MenuHeader from '../../assets/images/menuHeader.svg';
@@ -9,6 +8,7 @@ import Create from '../../assets/images/Create.svg';
 import Apps from '../../assets/images/Apps.svg';
 import Notification from '../../assets/images/Notification.svg';
 import Ava from '../../assets/images/ava.jpg';
+
 import {HeaderIcon} from '../HeaderIcon/HeaderIcon';
 
 
@@ -43,13 +43,19 @@ const SearchInputContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    div {
+        display: flex;
+        align-items: center;
+    }
 `;
 
 const SearchInput = styled.input`
     width: 50%;
-    background: transparent;
+    background: #616060;
     outline: none;
     border: none;
+    height: 30px;
+    color: white;
     border-bottom: 2px solid black;
     font-size: 18px;
 `;
@@ -81,12 +87,12 @@ const Header: React.FC = () => {
         setSearchValue('');
     };
 
-    return <HeaderContainer >
+    return <HeaderContainer>
         <MenuImgContainer>
-            <HeaderIcon img={MenuHeader} />
+            <HeaderIcon img={MenuHeader} back={'transparent'}/>
         </MenuImgContainer>
         <LogoContainer>
-            <HeaderIcon img={MytubeLogo} />
+            <HeaderIcon img={MytubeLogo} back={'transparent'}/>
             <span>MYTUBE</span>
         </LogoContainer>
         <SearchInputContainer>
@@ -97,13 +103,13 @@ const Header: React.FC = () => {
                 onChange={changeSearch}
             />
             <div onClick={search}>
-                <HeaderIcon img={Search} />
+                <HeaderIcon img={Search} back={'#424040'}/>
             </div>
         </SearchInputContainer>
         <AddedContainer>
-            <HeaderIcon img={Create} />
-            <HeaderIcon img={Apps} />
-            <HeaderIcon img={Notification} />
+            <HeaderIcon img={Create} back={'transparent'}/>
+            <HeaderIcon img={Apps} back={'transparent'}/>
+            <HeaderIcon img={Notification} back={'transparent'}/>
             <AvatarImg src={Ava}/>
         </AddedContainer>
     </HeaderContainer>;

@@ -2,17 +2,23 @@ import styled from 'styled-components';
 
 const HeaderIconImg = styled.img`
     width: 40px;
-    height: 30px;
+    height: 34px;
     cursor: pointer;
 `;
 
 interface IHeaderIcon {
-    img: string
+    img: string,
+    back: string,
 }
 
-const HeaderIcon: React.FC<IHeaderIcon> = ({img}) => {
+const HeaderIcon: React.FC<IHeaderIcon> = ({img, back}) => {
     return (
-        <HeaderIconImg src={img}/>
+        <HeaderIconImg
+            src={img}
+            style={{
+                background: back
+            }}
+        />
     );
 };
 
